@@ -43,7 +43,7 @@ if __name__ == "__main__":
     )
 
     while True:
-        timestamp = datetime.now().isoformat()
+        timestamp = datetime.now().astimezone().isoformat()
         moisture = {"timestamp": timestamp, "value": random.random()}
         saturation = {"timestamp": timestamp, "value": random.uniform(50, 900)}
         publisher.publish("mock/moisture", json.dumps(moisture))
