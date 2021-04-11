@@ -2,6 +2,7 @@ import json
 import os
 import random
 import time
+from datetime import datetime
 
 import paho.mqtt.client as mqtt
 from dotenv import load_dotenv
@@ -42,7 +43,7 @@ if __name__ == "__main__":
     )
 
     while True:
-        timestamp = time.time()
+        timestamp = datetime.now().isoformat()
         moisture = {"timestamp": timestamp, "value": random.random()}
         saturation = {"timestamp": timestamp, "value": random.uniform(50, 900)}
         publisher.publish("mock/moisture", json.dumps(moisture))
