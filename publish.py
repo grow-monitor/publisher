@@ -48,4 +48,4 @@ if __name__ == "__main__":
         saturation = {"timestamp": timestamp, "value": random.uniform(50, 900)}
         publisher.publish("mock/moisture", json.dumps(moisture))
         publisher.publish("mock/saturation", json.dumps(saturation))
-        time.sleep(5)
+        time.sleep(2)
