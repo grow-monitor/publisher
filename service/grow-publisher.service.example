@@ -1,0 +1,15 @@
+[Unit]
+Description=Publish sensor data from Raspberry Pi to an MQTT Broker
+After=multi-user.target
+
+[Service]
+Type=simple
+User=
+WorkingDirectory=
+ExecStart=
+Restart=on-failure
+StandardOutput=syslog+console
+StandardError=syslog+console
+
+[Install]
+WantedBy=multi-user.target

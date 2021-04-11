@@ -8,6 +8,8 @@ import paho.mqtt.client as mqtt
 from dotenv import load_dotenv
 from grow.moisture import Moisture
 
+from config import HOST, PASSWORD, PORT, USERNAME
+
 
 class Publisher(object):
     def __init__(self, username, password, host, port):
@@ -33,15 +35,8 @@ class Publisher(object):
         return return_code, message_id
 
 
-if __name__ == "__main__":
-    load_dotenv()
-    publisher = Publisher(
-        os.getenv("USERNAME"),
-        os.getenv("PASSWORD"),
-        os.getenv("HOST"),
-        int(os.getenv("PORT")),
-    )
-
+def main():
+    publisher = Publisher(USERNAME, PASSWORD, HOST, PORT)
     while True:
         timestamp = datetime.now().astimezone().isoformat()
         moisture = {"timestamp": timestamp, "value": random.random()}
@@ -49,3 +44,7 @@ if __name__ == "__main__":
         publisher.publish("mock/moisture", json.dumps(moisture))
         publisher.publish("mock/saturation", json.dumps(saturation))
         time.sleep(2)
+
+
+if __name__ == "__main__":
+    main()
