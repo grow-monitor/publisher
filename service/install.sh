@@ -25,8 +25,8 @@ inform "Installing systemd service...\n"
 
 cp grow-publisher-channel@.service /etc/systemd/system/
 for CHANNEL in {1..3}; do
-	systemctl reenable grow-publisher-channel$CHANNEL.service
-	systemctl start grow-publisher-channel$CHANNEL.service
+	systemctl enable grow-publisher-channel@$CHANNEL
+	systemctl start grow-publisher-channel@$CHANNEL
 done
 
 inform "\nSuccessfully installed grow-publisher as a systemd service.\n"
