@@ -98,6 +98,7 @@ def main():
         saturation = {"timestamp": timestamp, "value": sensor.saturation}
         publisher.publish(sensor.topic + "/moisture", json.dumps(moisture))
         publisher.publish(sensor.topic + "/saturation", json.dumps(saturation))
+        time.sleep(300)
 
 
 if __name__ == "__main__":
